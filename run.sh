@@ -37,6 +37,7 @@ echo "Waiting for bitblee to start."
 sleep 2
 
 echo "Running weechat."
+export TERM=xterm-256color
 su - $WEECHAT_USER -c "weechat irc://localhost/"
 
 echo "Killing bitblee."
