@@ -6,7 +6,7 @@ RUN apt-get install software-properties-common -y
 RUN add-apt-repository ppa:nesthib/weechat-stable -y
 
 RUN apt-get update
-RUN apt-get install weechat bitlbee perl -y
+RUN apt-get install weechat bitlbee bitlbee-plugin-otr perl -y
 
 ADD bitlbee.conf /etc/bitlbee/bitlbee.conf
 
