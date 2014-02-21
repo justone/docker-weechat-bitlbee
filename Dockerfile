@@ -7,6 +7,7 @@ RUN add-apt-repository ppa:nesthib/weechat-stable -y
 
 RUN apt-get update
 RUN apt-get install weechat bitlbee bitlbee-plugin-otr perl -y
+RUN ln -sf /usr/share/zoneinfo/PST8PDT /etc/localtime
 
 ADD bitlbee.conf /etc/bitlbee/bitlbee.conf
 
