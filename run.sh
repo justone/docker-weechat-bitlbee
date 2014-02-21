@@ -28,7 +28,9 @@ adduser --uid $WEECHAT_UID --gid $WEECHAT_GID $WEECHAT_USER --home $WEECHAT_HOME
 
 mkdir -p $WEECHAT_HOME/bitlbee
 chmod 700 $WEECHAT_HOME/bitlbee
-chown -R ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME
+chown -R ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME/bitlbee
+
+chown ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME
 
 echo "Starting bitblee."
 su - $WEECHAT_USER -c "/usr/sbin/bitlbee"
