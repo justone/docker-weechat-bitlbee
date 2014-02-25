@@ -40,7 +40,7 @@ sleep 2
 
 echo "Running weechat."
 export TERM=xterm-256color
-su - $WEECHAT_USER -c "weechat irc://localhost/"
+su - $WEECHAT_USER -c "LC_ALL=en_US.utf8 weechat irc://localhost/"
 
 echo "Killing bitblee."
 pkill bitlbee

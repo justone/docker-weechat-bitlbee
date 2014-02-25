@@ -2,7 +2,7 @@ FROM       ubuntu:13.10
 MAINTAINER Nate Jones <nate@endot.org>
 
 RUN apt-get update
-RUN apt-get install software-properties-common -y
+RUN apt-get install software-properties-common language-pack-en -y
 RUN add-apt-repository ppa:nesthib/weechat-stable -y
 
 RUN apt-get update
