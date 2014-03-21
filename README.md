@@ -3,6 +3,15 @@
 This repo contains instructions on how to build a docker image that will run
 [BitlBee](http://www.bitlbee.org/) and [WeeChat](http://www.weechat.org/).
 
+## Docker registry
+
+This image is available on the [Docker registry](https://index.docker.io/) as
+[nate/mkdocs](https://index.docker.io/u/nate/weechat-bitlbee/):
+
+```
+$ docker pull nate/weechat-bitlbee
+```
+
 ## Building
 
 ```
