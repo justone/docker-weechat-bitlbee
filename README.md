@@ -6,7 +6,7 @@ This repo contains instructions on how to build a docker image that will run
 ## Docker registry
 
 This image is available on the [Docker registry](https://index.docker.io/) as
-[nate/mkdocs](https://index.docker.io/u/nate/weechat-bitlbee/):
+[nate/weechat-bitlbee](https://index.docker.io/u/nate/weechat-bitlbee/):
 
 ```
 $ docker pull nate/weechat-bitlbee
