@@ -6,6 +6,10 @@ WEECHAT_GID=1000
 WEECHAT_USER=weechat
 WEECHAT_HOME=/weechat
 
+if [[ -z $IRC_SERVER ]]; then
+    IRC_SERVER=localhost
+fi
+
 if [[ -z $USER ]]; then
     echo "No \$USER env set, defaulting to USER=$WEECHAT_USER"
 else
@@ -26,24 +30,30 @@ echo "Setting up user ($WEECHAT_USER) to run weechat."
 addgroup --gid $WEECHAT_GID $WEECHAT_USER &> /dev/null
 adduser --uid $WEECHAT_UID --gid $WEECHAT_GID $WEECHAT_USER --home $WEECHAT_HOME --no-create-home --disabled-password --gecos '' &> /dev/null
 
-mkdir -p $WEECHAT_HOME/bitlbee
-chmod 700 $WEECHAT_HOME/bitlbee
-chown -R ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME/bitlbee
+if [[ $IRC_SERVER == "localhost" ]]; then
+    mkdir -p $WEECHAT_HOME/bitlbee
+    chmod 700 $WEECHAT_HOME/bitlbee
+    chown -R ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME/bitlbee
+fi
 
 chown ${WEECHAT_USER}.${WEECHAT_USER} $WEECHAT_HOME
 
-echo "Starting bitblee."
-su - $WEECHAT_USER -c "/usr/sbin/bitlbee"
+if [[ $IRC_SERVER == "localhost" ]]; then
+    echo "Starting bitblee."
+    su - $WEECHAT_USER -c "/usr/sbin/bitlbee"
 
-echo "Waiting for bitblee to start."
-sleep 2
+    echo "Waiting for bitblee to start."
+    sleep 2
+fi
 
 echo "Running weechat."
 export TERM=xterm-256color
-su - $WEECHAT_USER -c "LC_ALL=en_US.utf8 weechat irc://localhost/"
+su - $WEECHAT_USER -c "LC_ALL=en_US.utf8 weechat irc://$IRC_SERVER/"
 
-echo "Killing bitblee."
-pkill bitlbee
+if [[ $IRC_SERVER == "localhost" ]]; then
+    echo "Killing bitblee."
+    pkill bitlbee
 
-echo "Waiting for bitblee to end."
-sleep 2
+    echo "Waiting for bitblee to end."
+    sleep 2
+fi
