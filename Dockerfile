@@ -9,7 +9,7 @@ RUN apt-key add /tmp/bitlbee.key
 RUN echo "deb http://code.bitlbee.org/debian/devel/trusty/amd64/ ./" >> /etc/apt/sources.list.d/bitlbee.list
 
 RUN apt-get update
-RUN apt-get install weechat=1.0.1~stable+20140928~trusty1 bitlbee=3.2.2+20141028+devel+1060-2 bitlbee-plugin-otr=3.2.2+20141028+devel+1060-2 perl -y
+RUN apt-get install weechat=1.0.1~stable+20140928~trusty1 bitlbee=3.2.2+20141112+devel+1061-2 bitlbee-plugin-otr=3.2.2+20141112+devel+1061-2 perl -y
 RUN ln -sf /usr/share/zoneinfo/PST8PDT /etc/localtime
 
 ADD bitlbee.conf /etc/bitlbee/bitlbee.conf
