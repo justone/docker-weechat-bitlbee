@@ -52,6 +52,17 @@ environment variable and bitlbee will not be started:
 $ docker run --rm -i -t -v /host/path:/weechat -e IRC_SERVER=chat.freenode.net -e USER=bob nate/weechat-bitlbee
 ```
 
+### Prevent default connection
+
+By default, the run.sh script will connect to either localhost or the
+`$IRC_SERVER` variable.  If your weechat configuration does connections on its
+own, you can prevent this from happening by setting the `$NO_AUTO_CONNECT`
+environment variable.
+
+```
+$ docker run --rm -i -t -v /host/path:/weechat -e NO_AUTO_CONNECT=1 nate/weechat-bitlbee
+```
+
 # License
 
 Copyright © 2014 Nate Jones

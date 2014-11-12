@@ -48,7 +48,14 @@ fi
 
 echo "Running weechat."
 export TERM=xterm-256color
-su - $WEECHAT_USER -c "LC_ALL=en_US.utf8 weechat irc://$IRC_SERVER/"
+
+if [[ -z $NO_AUTO_CONNECT ]]; then
+    SERVER_ARG="irc://$IRC_SERVER/"
+else
+    SERVER_ARG=""
+fi
+
+su - $WEECHAT_USER -c "LC_ALL=en_US.utf8 weechat $SERVER_ARG"
 
 if [[ $IRC_SERVER == "localhost" ]]; then
     echo "Killing bitblee."
